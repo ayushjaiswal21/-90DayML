@@ -85,12 +85,12 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-print(confusion_matrix(y_test, yhat,labels=[1,0]))
+print(confusion_matrix(y_test, yhat, labels=[1,0]))
 # Compute confusion matrix
 cnf_matrix = confusion_matrix(y_test, yhat, labels=[1,0])
 np.set_printoptions(precision=2)
 
 # Plot non-normalized confusion matrix
 plt.figure()
-plot_confusion_matrix(cnf_matrix, classes=['churn=1','churn=0'],normalize= False,  title='Confusion matrix')
-print (classification_report(y_test, yhat))
+plot_confusion_matrix(cnf_matrix, classes=['churn=1','churn=0'], normalize=False, title='Confusion matrix')
+print(classification_report(y_test, yhat))

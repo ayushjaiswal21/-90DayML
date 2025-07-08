@@ -4,7 +4,7 @@
 # 
 # This project uses the NASA Airfoil Self-Noise dataset to predict the sound pressure level based on several input features using Apache Spark.
 
-# Install required packages
+# Install required packages ohk
 import subprocess
 import sys
 

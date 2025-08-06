@@ -6,7 +6,7 @@ import os
 # IMPORTANT: Change these to paths to your actual image files.
 # For best results, use an image with clear objects/shapes for Canny and morphology.
 image_path_canny = 'sample.jpg'  # Using existing image
-image_path_morphology = 'D:\90dayml\-90DayML\openCV\dog.jpg'  # Using existing image for morphology
+image_path_morphology = 'dog.jpg'  # Using existing image for morphology
 output_dir = 'output_images_day63/'  # Directory to save processed images
 
 # Create output directory if it doesn't exist
@@ -17,15 +17,22 @@ print(f"OpenCV Version: {cv2.__version__}")
 print(f"NumPy Version: {np.__version__}")
 
 # Helper function to display images and wait for a key press
-def display_and_save(window_name, image, filename=None):
+def display_and_save(window_name, image, filename=None, show_image=True):
     """
     Displays an image in a named window, waits for a key press,
     closes the window, and optionally saves the image.
     """
-    cv2.imshow(window_name, image)
-    print(f"Displaying '{window_name}'. Press any key to close and continue...")
-    cv2.waitKey(0)
-    cv2.destroyWindow(window_name) # Close only this specific window
+    if show_image:
+        try:
+            cv2.imshow(window_name, image)
+            print(f"Displaying '{window_name}'. Press any key to close and continue...")
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()  # Close all windows to avoid issues
+        except Exception as e:
+            print(f"Could not display image '{window_name}': {e}")
+            print("Continuing without display...")
+    else:
+        print(f"Processing '{window_name}' (display disabled)")
 
     if filename:
         full_path = os.path.join(output_dir, filename)
